@@ -27,9 +27,10 @@ For a little bit of customization without us struggling to create configs for ea
 Shulkers In Bundles exposes a supported API which you can mixin into and change how many shulkers you want to be able to put in a single bundle.
 
 <details>
-<summary>Mixin Code Example</summary>
+<summary>Mixin Code Example pre-1.2.2</summary>
+
 ```java
-package xyz.yourmod.mixin; //doesn't matter what your package is named
+package xyz.yourself.mod.mixin; //doesn't matter what your package is named
 
 import net.justmili.shulkersinbundles.data.ShulkerFractions;
 import org.apache.commons.lang3.math.Fraction;
@@ -49,6 +50,22 @@ public class ShulkerWeightMixin {
     }
 }
 ```
+</details>
+
+<details>
+<summary>Mixin Code Example 1.2.2+</summary>
+Just use pre-1.2.2 but change
+
+```java
+import net.justmili.shulkersinbundles.data.ShulkerFractions;
+```
+
+to 
+
+```java
+import net.justmili.shulkersinbundles.core.data.ShulkerFractions;
+```
+
 </details>
 
 Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with highest priority) mixin will be used.
