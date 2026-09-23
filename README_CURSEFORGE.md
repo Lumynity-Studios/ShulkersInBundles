@@ -12,9 +12,9 @@ Shulkers In Bundles is a small but **multi-loader and always up-to-date** QoL mo
 
 To prevent infinite storage in a single slot, using the mod to perhaps chunk-ban people, or even just overloading servers or your own singleplayer worlds, the mod disables some things.
 
-\- You can no longer put Bundles in Shulkers
+- You can no longer put Bundles in Shulkers
   - Except if they're empty
-\- You can no longer put Bundles in Bundles
+- You can no longer put Bundles in Bundles
   - Except if they're empty
 
 ***
@@ -23,9 +23,9 @@ To prevent infinite storage in a single slot, using the mod to perhaps chunk-ban
 
 For a little bit of customization without us struggling to create configs for each loader for so many versions, Shulkers In Bundles exposes a supported API which you can mixin into and change how many shulkers you want to be able to put in a single bundle.
 
-**_Mixin Code Example;_**
+**_Mixin Code Example pre-1.2.2;_**
 
-<div class="spoiler"><pre><code>package xyz.yourmod.mixin; //doesn't matter what your package is named
+<div class="spoiler"><pre><code>package xyz.yourself.mod.mixin; //doesn't matter what your package is named
 
 import net.justmili.shulkersinbundles.data.ShulkerFractions;
 import org.apache.commons.lang3.math.Fraction;
@@ -43,7 +43,18 @@ public class ShulkerWeightMixin {
         // (To be exact, this for example is 1/8th of the bundle per shulker, so 8 shulkers will fit.)
         // Minimum is 1, maximum is 64.
     }
-}</code></pre></div>
+}
+
+</code></pre></div>
+
+**_Mixin Code Example 1.2.2+;_**
+
+<div class="spoiler">
+  Just use pre-1.2.2 but change
+  <pre><code>import net.justmili.shulkersinbundles.data.ShulkerFractions;</code></pre>
+  to 
+  <pre><code>import net.justmili.shulkersinbundles.core.data.ShulkerFractions;</code></pre>
+</div>
 
 Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with highest priority) mixin will be used.
 
