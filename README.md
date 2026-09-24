@@ -63,7 +63,7 @@ import net.justmili.shulkersinbundles.data.ShulkerFractions;
 to 
 
 ```java
-import net.justmili.shulkersinbundles.core.data.ShulkerFractions;
+import net.justmili.shulkersinbundles.core.util.ShulkerWeight;
 ```
 
 </details>
