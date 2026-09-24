@@ -1,16 +1,21 @@
 {
   "required": true,
-  "package": "net.justmili.shulkersinbundles.mixin",
-  "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
+  "package": "net.justmili.shulkersinbundles.core.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixinextras": {
+    "minVersion": "0.5.0"
+  },
   "mixins": [
-    "NoBundlesInBundles",
-    "NoBundlesInShulkers",
-    "NoBundlesInShulkersThroughFace",
-    "NoInsertItemsInBundlesInShulkers",
-    "ShulkersInBundles"
+    "BundleContentsMixin",
+    "BundleItemMixin",
+    "ShulkerBoxBlockEntityMixin",
+    "ShulkerSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
 }
