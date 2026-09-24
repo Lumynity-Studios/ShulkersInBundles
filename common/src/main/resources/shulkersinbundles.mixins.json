@@ -1,14 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.justmili.shulkersinbundles.mixin",
+  "package": "net.justmili.shulkersinbundles.core.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "NoBundlesInBundles",
-    "NoBundlesInShulkers",
-    "NoBundlesInShulkersThroughFace",
-    "NoInsertItemsInBundlesInShulkers",
-    "ShulkersInBundles"
+    "BundleContentsMixin",
+    "BundleItemMixin",
+    "ShulkerBoxBlockEntityMixin",
+    "ShulkerSlotMixin"
   ],
   "injectors": {
     "defaultRequire": 1
