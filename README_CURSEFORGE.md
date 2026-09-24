@@ -23,40 +23,57 @@ To prevent infinite storage in a single slot, using the mod to perhaps chunk-ban
 
 For a little bit of customization without us struggling to create configs for each loader for so many versions, Shulkers In Bundles exposes a supported API which you can mixin into and change how many shulkers you want to be able to put in a single bundle.
 
-**_Mixin Code Example pre-1.2.2;_**
-
-<div class="spoiler"><pre><code>package xyz.yourself.mod.mixin; //doesn't matter what your package is named
-
-import net.justmili.shulkersinbundles.data.ShulkerFractions;
-import org.apache.commons.lang3.math.Fraction;
-import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-@Mixin(ShulkerFractions.class)
-public class ShulkerWeightMixin {
-    @Inject(method = "getShulkerWeight", at = @At("HEAD"), cancellable = true)
-    private static void modifyShulkerWeight(CallbackInfoReturnable&lt;Fraction&gt; cir) {
-        cir.setReturnValue(Fraction.getFraction(1, 8));
-        // ^^^ The 2nd number is how many shulkers will fit.
-        // (To be exact, this for example is 1/8th of the bundle per shulker, so 8 shulkers will fit.)
-        // Minimum is 1, maximum is 64.
-    }
-}
-
-</code></pre></div>
-
-**_Mixin Code Example 1.2.2+;_**
+<strong><em>Mixin Code Example 1.2.2+</em></strong>
 
 <div class="spoiler">
-  Just use pre-1.2.2 but change
-  <pre><code>import net.justmili.shulkersinbundles.data.ShulkerFractions;</code></pre>
-  to 
-  <pre><code>import net.justmili.shulkersinbundles.core.util.ShulkerWeight;</code></pre>
+    <pre><code>package xyz.yourself.mod.mixin; // doesn't matter what your package is named
+
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import org.apache.commons.lang3.math.Fraction;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.injection.At;
+
+@Pseudo
+@Mixin(targets = "net.justmili.shulkersinbundles.core.util.ItemWeights")
+public class ShulkerWeightMixin {
+
+    @ModifyReturnValue(method = "getShulker", at = @At("RETURN"), remap = false)
+    private static Fraction modid$modifyShulkerWeight(Fraction original) {
+        return Fraction.getFraction(1, 8);
+        // ^^^ The 2nd number is how many shulkers will fit.
+        // (To be exact, 1/8th of the bundle per shulker means 8 shulkers will fit.)
+        // Minimum is 1, maximum is 64.
+    }
+}</code></pre>
 </div>
 
-Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with highest priority) mixin will be used.
+<strong><em>Mixin Code Example pre-1.2.2</em></strong>
+
+<div class="spoiler">
+    <pre><code>package xyz.yourself.mod.mixin; // doesn't matter what your package is named
+
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import org.apache.commons.lang3.math.Fraction;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.injection.At;
+
+@Pseudo
+@Mixin(targets = "net.justmili.shulkersinbundles.data.ShulkerFractions")
+public class ShulkerWeightMixin {
+
+    @ModifyReturnValue(method = "getShulkerWeight", at = @At("RETURN"), remap = false)
+    private static Fraction modid$modifyShulkerWeight(Fraction original) {
+        return Fraction.getFraction(1, 8);
+        // ^^^ The 2nd number is how many shulkers will fit.
+        // (To be exact, 1/8th of the bundle per shulker means 8 shulkers will fit.)
+        // Minimum is 1, maximum is 64.
+    }
+}</code></pre>
+</div>
+
+Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with the highest priority) mixin will be used.
 
 ***
 
