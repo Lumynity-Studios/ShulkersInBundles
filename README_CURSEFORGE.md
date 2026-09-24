@@ -53,7 +53,7 @@ public class ShulkerWeightMixin {
   Just use pre-1.2.2 but change
   <pre><code>import net.justmili.shulkersinbundles.data.ShulkerFractions;</code></pre>
   to 
-  <pre><code>import net.justmili.shulkersinbundles.core.data.ShulkerFractions;</code></pre>
+  <pre><code>import net.justmili.shulkersinbundles.core.util.ShulkerWeight;</code></pre>
 </div>
 
 Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with highest priority) mixin will be used.
