@@ -27,17 +27,19 @@ Shulkers In Bundles exposes a supported API which you can mixin into and change 
 ```java
 package xyz.yourself.mod.mixin; //doesn't matter what your package is named
 
-import net.justmili.shulkersinbundles.data.ShulkerFractions;
 import org.apache.commons.lang3.math.Fraction;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ShulkerFractions.class)
+@Pseudo
+@Mixin(targets = "net.justmili.shulkersinbundles.data.ShulkerFractions")
 public class ShulkerWeightMixin {
+    
     @Inject(method = "getShulkerWeight", at = @At("HEAD"), cancellable = true)
-    private static void modifyShulkerWeight(CallbackInfoReturnable<Fraction> cir) {
+    private static void modid$modifyShulkerWeight(CallbackInfoReturnable<Fraction> cir) {
         cir.setReturnValue(Fraction.getFraction(1, 8));
         // ^^^ The 2nd number is how many shulkers will fit.
         // (To be exact, this for example is 1/8th of the bundle per shulker, so 8 shulkers will fit.)
@@ -49,18 +51,30 @@ public class ShulkerWeightMixin {
 
 <details>
 <summary>Mixin Code Example 1.2.2+</summary>
-Just use pre-1.2.2 but change
 
 ```java
-import net.justmili.shulkersinbundles.data.ShulkerFractions;
+package xyz.yourself.mod.mixin; //doesn't matter what your package is named
+
+import org.apache.commons.lang3.math.Fraction;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Pseudo;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Pseudo
+@Mixin(targets = "net.justmili.shulkersinbundles.core.util.ShulkerWeight")
+public class ShulkerWeightMixin {
+    
+    @Inject(method = "getWeight", at = @At("HEAD"), cancellable = true)
+    private static void modid$modifyShulkerWeight(CallbackInfoReturnable<Fraction> cir) {
+        cir.setReturnValue(Fraction.getFraction(1, 8));
+        // ^^^ The 2nd number is how many shulkers will fit.
+        // (To be exact, this for example is 1/8th of the bundle per shulker, so 8 shulkers will fit.)
+        // Minimum is 1, maximum is 64.
+    }
+}
 ```
-
-to 
-
-```java
-import net.justmili.shulkersinbundles.core.util.ShulkerWeight;
-```
-
 </details>
 
 Keep in mind, if multiple mods modify the shulker weight, the last-applied (or with highest priority) mixin will be used.
