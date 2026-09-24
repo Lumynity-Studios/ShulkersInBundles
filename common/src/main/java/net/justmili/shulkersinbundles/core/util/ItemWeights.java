@@ -17,12 +17,14 @@ public class ItemWeights {
      * Bundles have a total capacity of {@code 1}, so the value is
      * the fraction of that capacity used by a single Shulker Box.
      * <p>
+     * The numerator and denominator are each clamped between {@code 1} and {@code 64}.
+     * <p>
      * The default is {@code 1/16}.
      *
      * @param fraction the new weight of a Shulker Box, as a fraction of a Bundle's capacity
      */
     public static void setShulker(Fraction fraction) {
-        SHULKER = fraction;
+        SHULKER = Fraction.getFraction(clamp(fraction.getNumerator()), clamp(fraction.getDenominator()));
     }
 
     /**
@@ -31,12 +33,15 @@ public class ItemWeights {
      * Convenience overload of {@link #setShulker(Fraction)} for unit fractions.
      * For example, {@code setShulker(8)} makes a Shulker Box take up {@code 1/8} of a Bundle's capacity.
      * <p>
-     * If the denominator is {@code 0} or lower, it falls back to {@code 1}.
+     * The denominator is clamped between {@code 1} and {@code 64}.
      *
-     * @param denominator the denominator of the new weight, values of {@code 0} or lower become {@code 1}
+     * @param denominator the denominator of the new weight, clamped between {@code 1} and {@code 64}
      */
     public static void setShulker(int denominator) {
-        if (denominator <= 0) denominator = 1;
-        SHULKER = Fraction.getFraction(1, denominator);
+        SHULKER = Fraction.getFraction(1, clamp(denominator));
+    }
+
+    private static int clamp(int value) {
+        return Math.clamp(value, 1, 64);
     }
 }
