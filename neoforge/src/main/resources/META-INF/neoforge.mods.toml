@@ -1,6 +1,6 @@
 modLoader = "javafml"
-loaderVersion = "[2,)"
-issueTrackerURL = ""
+loaderVersion = "[0,)"
+issueTrackerURL = "https://github.com/Lumynity-Studios/ShulkersInBundles/issues"
 license = "MIT"
 
 [[mods]]
@@ -12,13 +12,6 @@ description = '''
 Making bundles a little bit more convenient and useful by allowing to put shulkers in them
 '''
 logoFile = "icon.png"
-
-[[dependencies.shulkersinbundles]]
-modId = "neoforge"
-type = "required"
-versionRange = "[${neo_version_range},)"
-ordering = "NONE"
-side = "BOTH"
 
 [[dependencies.shulkersinbundles]]
 modId = "minecraft"

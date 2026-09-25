@@ -9,7 +9,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/shulkers-in-bundles",
-    "sources": "https://github.com/JustMili0/ShulkersInBundles"
+    "sources": "https://github.com/Lumynity-Studios/ShulkersInBundles",
+    "issues": "https://github.com/Lumynity-Studios/ShulkersInBundles/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
@@ -24,18 +25,6 @@
   ],
   "depends": {
     "fabricloader": ">=${fabric_loader_version}",
-    "minecraft": [
-      "1.21.2",
-      "1.21.3",
-      "1.21.4",
-      "1.21.5",
-      "1.21.6",
-      "1.21.7",
-      "1.21.8",
-      "1.21.9",
-      "1.21.10",
-      "1.21.11"
-    ],
-    "java": ">=21"
+    "minecraft": ">=1.21.2 <=1.21.11"
   }
 }
