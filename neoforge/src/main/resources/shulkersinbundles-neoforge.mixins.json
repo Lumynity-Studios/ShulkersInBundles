@@ -1,10 +1,11 @@
 {
   "required": true,
-  "package": "net.justmili.shulkersinbundles.neoforge.mixin",
+  "package": "net.justmili.shulkersinbundles.core.mixin.neoforge",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "mixins": [
-    "ShulkersInBundlesInsertNeo"
+    "BundleContentsMutableMixin",
+    "BundleItemMixin"
   ],
   "injectors": {
     "defaultRequire": 1

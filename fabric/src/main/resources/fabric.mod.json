@@ -9,7 +9,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/shulkers-in-bundles",
-    "sources": "https://github.com/JustMili0/ShulkersInBundles"
+    "sources": "https://github.com/Lumynity-Studios/ShulkersInBundles",
+    "issues": "https://github.com/Lumynity-Studios/ShulkersInBundles/issues"
   },
   "license": "MIT",
   "icon": "icon.png",
@@ -27,7 +28,6 @@
     "minecraft": [
       "1.21",
       "1.21.1"
-    ],
-    "java": ">=21"
+    ]
   }
 }
