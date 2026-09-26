@@ -1,6 +1,7 @@
 package net.justmili.shulkersinbundles.core.util;
 
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.BundleItem;
 import net.minecraft.world.item.Item;
@@ -11,18 +12,14 @@ import net.minecraft.world.level.block.ShulkerBoxBlock;
 public class Util {
 
     public static boolean isBundleWithAllowed(ItemStack stack) {
-        var contents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        boolean allowInteract = true;
+        var contents = stack.get(DataComponents.BUNDLE_CONTENTS);
 
+        if (contents == null || contents.isEmpty()) return true;
+        // No item tags to check is it a bundle or a shulker box, wasn't added yet
         for (var item : contents.items()) {
-
-            // No item tags to check is it a bundle or a shulker box, wasn't added yet
-            if (isShulkerOrBundle(item.getItem())) {
-                allowInteract = false;
-                break;
-            }
+            if (isShulkerOrBundle(item.getItem())) return false;
         }
-        return contents.isEmpty() || allowInteract;
+        return true;
     }
 
     public static boolean preventInteract(ItemStack stack, boolean original) {
