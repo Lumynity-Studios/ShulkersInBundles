@@ -45,21 +45,19 @@ subprojects {
     }
 
     def detectedPlatform
-    def minMcVersion = rootProject.min_minecraft_version
     def name = project.name.toLowerCase()
     if (name.contains('fabric')) {
         detectedPlatform = 'Fabric'
     } else if (name.contains('neoforge')) {
         detectedPlatform = 'NeoForge'
     } else if (name.contains('forge')) {
-        minMcVersion = '1.21.3'
         detectedPlatform = 'Forge'
     } else {
         detectedPlatform = 'Unknown'
     }
 
     if (detectedPlatform) {
-        project.version = "${rootProject.mod_version}+mc${minMcVersion}-${rootProject.minecraft_version}-${detectedPlatform}"
+        project.version = "${rootProject.mod_version}+mc${rootProject.minecraft_version}-${detectedPlatform}"
     } else {
         project.version = rootProject.mod_version
     }

@@ -12,16 +12,13 @@ import net.minecraft.world.level.block.ShulkerBoxBlock;
 public class Util {
 
     public static boolean isBundleWithAllowed(ItemStack stack) {
-        var contents = stack.getOrDefault(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY);
-        boolean allowInteract = true;
+        var contents = stack.get(DataComponents.BUNDLE_CONTENTS);
 
+        if (contents == null || contents.isEmpty()) return true;
         for (var item : contents.items()) {
-            if (item.is(ItemTags.BUNDLES) || item.is(ItemTags.SHULKER_BOXES)) {
-                allowInteract = false;
-                break;
-            }
+            if (item.is(ItemTags.BUNDLES) || item.is(ItemTags.SHULKER_BOXES)) return false;
         }
-        return contents.isEmpty() || allowInteract;
+        return true;
     }
 
     public static boolean preventInteract(ItemStack stack, boolean original) {
