@@ -16,6 +16,6 @@ logoFile = "icon.png"
 [[dependencies.shulkersinbundles]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.21.3,1.21.11]"
+versionRange = "[1.21.3,1.21.4]"
 ordering = "NONE"
 side = "BOTH"
