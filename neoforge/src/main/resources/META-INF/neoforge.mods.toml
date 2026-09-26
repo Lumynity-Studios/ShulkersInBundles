@@ -1,5 +1,6 @@
 modLoader="javafml"
 loaderVersion="[0,)"
+issueTrackerURL = "https://github.com/Lumynity-Studios/ShulkersInBundles/issues"
 license = "${mod_license}"
 
 [[mods]]
@@ -14,13 +15,6 @@ logoFile = "icon.png"
 modId = "minecraft"
 type = "required"
 versionRange = "${minecraft_version_constraint}"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.${mod_id}]]
-modId = "neoforge"
-type = "required"
-versionRange = "[${neoforge_version},)"
 ordering = "NONE"
 side = "BOTH"
 

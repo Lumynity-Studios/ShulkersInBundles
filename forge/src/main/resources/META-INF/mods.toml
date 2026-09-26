@@ -1,5 +1,6 @@
 modLoader="javafml"
 loaderVersion="[0,)"
+issueTrackerURL = "https://github.com/Lumynity-Studios/ShulkersInBundles/issues"
 license = "${mod_license}"
 
 [[mods]]
@@ -14,12 +15,5 @@ logoFile = "icon.png"
 modId = "minecraft"
 mandatory = true
 versionRange = "${minecraft_version_constraint}"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.${mod_id}]]
-modId = "forge"
-mandatory = true
-versionRange = "[${forge_version},)"
 ordering = "NONE"
 side = "BOTH"

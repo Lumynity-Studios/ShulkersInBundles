@@ -50,7 +50,7 @@ allprojects {
         jar {
             from("LICENSE") {
                 rename {
-                    "${it}_${rootProject.property("archives_base_name")}"
+                    "$it"
                 }
             }
         }
