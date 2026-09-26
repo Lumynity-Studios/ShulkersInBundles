@@ -16,6 +16,10 @@ your own singleplayer worlds with too much data, the mod adds, disables and modi
 - You can't put bundles or shulker boxes into bundles that are already in a shulker box
 - Any means of item transportation (hoppers etc.) can not input bundles with a shulker box or another bundle inside it into a shulker box
 
+Additional changes for 1.21.1 port:
+- Backported Bundle recipe
+- Bundles are always enabled, even if you haven't turned on experimental features before
+
 ***
 
 ### Open API
@@ -23,7 +27,8 @@ For a little bit of customization without us struggling to create configs for ea
 Shulkers In Bundles exposes a supported API which you can easily add into another mod to change how much space a shulker box takes up inside a bundle.<br>
 The default weight is `1/16`, meaning you can fit up to 16 shulker boxes in a Bundle.
 
-<strong><em>API Code Example 1.2.2+</em></strong>
+<strong><em>Example (Fabric)</em></strong><br>
+This example only applies to Shulkers In Bundles 1.2.2+
 
 <div class="spoiler">
 <pre><code>// In your mod initializer class;

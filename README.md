@@ -20,6 +20,10 @@ your own singleplayer worlds with too much data, the mod adds, disables and modi
 - You can't put bundles or shulker boxes into bundles that are already in a shulker box
 - Any means of item transportation (hoppers etc.) can not input bundles with a shulker box or another bundle inside it into a shulker box
 
+Additional changes for 1.21.1 port:
+- Backported Bundle recipe
+- Bundles are always enabled, even if you haven't turned on experimental features before
+
 <hr>
 
 ### Open API
